@@ -1,11 +1,18 @@
 # U-Blog
 Console based blog management project in Java
 
-### To run this project
-Run all the queries mentioned below or mentioned in the setup.sql file in your MySQL workbench.
-This will ensure that all the required tables get created in the MySQL database.
+### To run this project*
+#### 1) Clone this repository.
+#### 2) Import in your faviorate IDE.
+#### 3) Add JDBC mySQL Driver to project directory (If not downloaded use <a href = "https://dev.mysql.com/downloads/connector/j/" target = "_blank"> MYSQL Driver</a>). <br>
+#### 4)Run all the queries mentioned below or mentioned in the setup.sql file in your MySQL workbench.
+        This will ensure that all the required tables get created in the MySQL database.
+#### 4) Run Application.java file.   
 
-### Queries 
+*Java and MySQl needed to run on your machine.
+        
+
+#### Queries 
 <p>*****************Start***************</p>
 -> CREATE DATABASE ublog;
 
