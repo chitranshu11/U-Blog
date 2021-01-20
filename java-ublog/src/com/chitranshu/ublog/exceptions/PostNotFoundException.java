@@ -1,4 +1,4 @@
-package com.upgrad.ublog.exceptions;
+package com.chitranshu.ublog.exceptions;
 
 public class PostNotFoundException extends Exception {
 

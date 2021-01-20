@@ -1,19 +1,6 @@
-package com.upgrad.ublog.dtos;
+package com.chitranshu.ublog.dtos;
 
 import java.time.LocalDateTime;
-
-/**
- * TODO: 1.6. Declare 6 private instance variables in this class named as postId,
- * emailId, tag, title, description and timestamp. Out of these 6 variables, postId
- * will be of type int and timestamp will be of type LocalDateTime
- * (import java.time.LocalDateTime). Other four variables will be of type String.
- * <p>
- * TODO: 1.7. Provide getters and setters for each of the instance variables. Also,
- * provide a no-arg constructor and a parameterized constructor to create objects
- * of Post class.
- * <p>
- * Note: Uncomment the toString() method given below, instead of writing a new one.
- */
 
 public class Post {
     private int postId;
@@ -82,7 +69,8 @@ public class Post {
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
     }
-     @Override
+
+    @Override
     public String toString() {
         return "Post{" +
                 "postId=" + postId +
@@ -92,5 +80,5 @@ public class Post {
                 ", description='" + description + '\'' +
                 ", timestamp=" + timestamp +
                 '}';
-   }
+    }
 }

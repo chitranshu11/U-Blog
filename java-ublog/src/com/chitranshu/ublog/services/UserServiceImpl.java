@@ -1,11 +1,11 @@
-package com.upgrad.ublog.services;
+package com.chitranshu.ublog.services;
 
-import com.upgrad.ublog.dao.DAOFactory;
-import com.upgrad.ublog.dao.UserDAO;
-import com.upgrad.ublog.dtos.User;
-import com.upgrad.ublog.exceptions.IncorrectPasswordException;
-import com.upgrad.ublog.exceptions.UserAlreadyRegisteredException;
-import com.upgrad.ublog.exceptions.UserNotFoundException;
+import com.chitranshu.ublog.dao.DAOFactory;
+import com.chitranshu.ublog.dao.UserDAO;
+import com.chitranshu.ublog.dtos.User;
+import com.chitranshu.ublog.exceptions.IncorrectPasswordException;
+import com.chitranshu.ublog.exceptions.UserAlreadyRegisteredException;
+import com.chitranshu.ublog.exceptions.UserNotFoundException;
 
 import java.sql.SQLException;
 

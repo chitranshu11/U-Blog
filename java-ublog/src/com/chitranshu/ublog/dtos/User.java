@@ -1,9 +1,9 @@
-package com.upgrad.ublog.dtos;
+package com.chitranshu.ublog.dtos;
 
 public class User {
-    private  int userId;
+    private int userId;
     private String emailId;
-    private  String password;
+    private String password;
 
     public User() {
     }
@@ -46,5 +46,5 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
-    
+
 }

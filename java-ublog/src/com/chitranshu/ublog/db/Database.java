@@ -1,4 +1,4 @@
-package com.upgrad.ublog.db;
+package com.chitranshu.ublog.db;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,19 +10,19 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
 public class Database {
     private static Connection connection;
+
     private Database() {
     }
+
     public static Connection getConnection() {
         if (connection == null) {
             Map<String, String> credentials = null;
             try (BufferedReader br = new BufferedReader(new FileReader("./src/com/upgrad/ublog/db/database.config"))) {
                 credentials = new HashMap<>();
                 String line;
-                while ((line=br.readLine()) != null) {
+                while ((line = br.readLine()) != null) {
                     String[] tokens = line.split("=");
                     credentials.put(tokens[0], tokens[1]);
                 }
@@ -49,7 +49,7 @@ public class Database {
     }
 
 
-        public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException {
         try {
             System.out.println("Connected");
         } catch (Exception e) {
