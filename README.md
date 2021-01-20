@@ -8,12 +8,15 @@ This will ensure that all the required tables get created in the MySQL database.
 ### Queries 
 <p>*****************Start***************</p>
 -> CREATE DATABASE ublog;
+
 -> USE ublog;
+
 -> CREATE TABLE user (
     userId INTEGER AUTO_INCREMENT PRIMARY KEY,
     emailId VARCHAR(100),
     password VARCHAR(100)
 );
+
 -> CREATE TABLE post (
     postId INTEGER AUTO_INCREMENT PRIMARY KEY,
     emailId VARCHAR(100),
