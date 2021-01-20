@@ -19,7 +19,7 @@ public class Database {
     public static Connection getConnection() {
         if (connection == null) {
             Map<String, String> credentials = null;
-            try (BufferedReader br = new BufferedReader(new FileReader("./src/com/upgrad/ublog/db/database.config"))) {
+            try (BufferedReader br = new BufferedReader(new FileReader("./src/com/chitranshu/ublog/db/database.config"))) {
                 credentials = new HashMap<>();
                 String line;
                 while ((line = br.readLine()) != null) {
