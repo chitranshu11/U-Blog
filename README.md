@@ -1,6 +1,7 @@
 # U-Blog
-Console based blog management project in Java
-
+### Console based Blog Management Project in Java.
+#### CRUD - Post Blog, Search Blog, Filter Blog, Register User, Login User
+##### To see more into it click <a href = "https://github.com/chitranshu11/U-Blog/blob/main/java-ublog/README.md">Project Structure</a>
 ### To run this project*
 #### 1) Clone this repository.
 #### 2) Import in your faviorate IDE.
@@ -33,3 +34,6 @@ Console based blog management project in Java
     timestamp VARCHAR(100)
 );
 <p>*****************End******************</p>
+
+#### Yes, this project can be improved it. Will work on it in future. Until feel free to raise issues and contribute.
+### Happy Coding!!
