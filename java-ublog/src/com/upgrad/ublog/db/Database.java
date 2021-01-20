@@ -1,25 +1,59 @@
 package com.upgrad.ublog.db;
 
-/**
- * TODO 3.2: Implement the Database class using the Singleton Pattern (Hint. Should have the
- *  private no-arg constructor, a private static connection attribute of type Connection and a public
- *  static getConnection() method which return the connection attribute).
- * TODO 3.3: The getInstance() method should check if the connection attribute is null. If yes, then
- *  it should create a connection object which is connected with the local database and assign this
- *  connection object to the connection attribute. In the end, return this connection attribute.
- * TODO 3.4: You should handle the ClassNotFoundException and SQLException individually,
- *  and not using the Exception class.
- */
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+
 
 public class Database {
+    private static Connection connection;
+    private Database() {
+    }
+    public static Connection getConnection() {
+        if (connection == null) {
+            Map<String, String> credentials = null;
+            try (BufferedReader br = new BufferedReader(new FileReader("./src/com/upgrad/ublog/db/database.config"))) {
+                credentials = new HashMap<>();
+                String line;
+                while ((line=br.readLine()) != null) {
+                    String[] tokens = line.split("=");
+                    credentials.put(tokens[0], tokens[1]);
+                }
+            } catch (FileNotFoundException e) {
+                System.out.println("Config file not found.");
+            } catch (IOException e) {
+                System.out.println("Error while reading config file.");
+            }
+            String url = credentials.get("url");
+            String username = credentials.get("username");
+            String password = credentials.get("password");
+
+            try {
+                Class.forName(credentials.get("driverName"));
+                connection = DriverManager.getConnection(url, username, password);
+                //System.out.println("Connected");
+            } catch (ClassNotFoundException e) {
+                System.out.println(credentials.get("errorMessage"));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return connection;
+    }
 
 
-//    public static void main(String[] args) throws SQLException {
-//        try {
-//            Database.getConnection();
-//            System.out.println("Connected");
-//        } catch (Exception e) {
-//            System.out.println("Not Connected");
-//        }
-//    }
+        public static void main(String[] args) throws SQLException {
+        try {
+            System.out.println("Connected");
+        } catch (Exception e) {
+            System.out.println("Not Connected");
+        }
+    }
 }

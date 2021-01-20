@@ -65,16 +65,6 @@ public class Application {
         } while (flag);
     }
 
-    /**
-     * TODO 3.17. Implement the login() method. This method should prompt the user for the
-     *  email id and the password. Use the login() method of the UserService interface
-     *  to login into the application. If the user is successfully logged into the application,
-     *  print "You are logged in." on the console, set isLoggedIn to true and set
-     *  loggedInEmailId to the email id provided by the user.
-     *  Catch all the exceptions thrown by the login() method of the UserService interface with
-     *  a single catch block which handles all exceptions using the Exception class and print the
-     *  exception message using the getMessage() method.
-     */
     private void login() {
         if (isLoggedIn) {
             System.out.println("You are already logged in.");
@@ -85,19 +75,23 @@ public class Application {
         System.out.println("********Login********");
         System.out.println("*********************");
 
+        User user = new User();
+
+        System.out.println("Enter EmailId");
+        user.setEmailId(scanner.nextLine());
+        System.out.println("Enter Password");
+        user.setPassword(scanner.nextLine());
+        try {
+            userService.login(user);
+            System.out.println("You are logged in.");
+            isLoggedIn = true;
+            loggedInEmailId = user.getEmailId();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
-    /**
-     * TODO 3.18. Implement the register() method. This method should prompt the user for the
-     *  email id and the password. Use the register() method of the UserService interface
-     *  to register into the application. If the user is successfully registered into the application,
-     *  print "You are logged in." on the console, set isLoggedIn to true and set
-     *  loggedInEmailId to the email id provided by the user.
-     *  Catch all the exceptions thrown by the register() method of the UserService interface with
-     *  a single catch block which handles all exceptions using the Exception class and print the
-     *  exception message using the getMessage() method.
-     */
     private void register() {
         if (isLoggedIn) {
             System.out.println("You are already logged in.");
@@ -108,6 +102,21 @@ public class Application {
         System.out.println("******Register*******");
         System.out.println("*********************");
 
+        User user = new User();
+
+        System.out.println("Enter EmailId:");
+        user.setEmailId(scanner.nextLine());
+        System.out.println("Enter Password");
+        user.setPassword(scanner.nextLine());
+
+        try {
+            userService.register(user);
+            System.out.println("You are logged in.");
+            isLoggedIn = true;
+            loggedInEmailId = user.getEmailId();
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
@@ -152,7 +161,27 @@ public class Application {
         System.out.println("*****Create Post*****");
         System.out.println("*********************");
 
+        Post post = new Post();
 
+        post.setEmailId(loggedInEmailId);
+
+        System.out.println("Enter tile:");
+        post.setTitle(scanner.nextLine());
+
+        System.out.println("Enter tag:");
+        post.setTag(scanner.nextLine());
+
+
+        System.out.println("Enter description:");
+        post.setDescription(scanner.nextLine());
+
+        post.setTimestamp(LocalDateTime.now());
+
+        try {
+            postService.create(post);
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
@@ -236,13 +265,10 @@ public class Application {
         loggedInEmailId = null;
     }
 
-    /**
-     * TODO 3.16. Instantiate the userService and the postService variables using the ServiceFactory.
-     */
     public static void main(String[] args) {
         ServiceFactory serviceFactory = new ServiceFactory();
-        UserService userService = null;
-        PostService postService = null;
+        UserService userService = serviceFactory.getUserService();
+        PostService postService =serviceFactory.getPostService();
         Application application = new Application(postService, userService);
         application.start();
     }
